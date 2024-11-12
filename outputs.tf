@@ -39,21 +39,21 @@ output "apigatewayv2_api_execution_arn" {
 #  value       = try(aws_apigatewayv2_stage.default[0].invoke_url, "")
 #}
 
-output "default_apigatewayv2_stage_domain_name" {
-  description = "Domain name of the stage (useful for CloudFront distribution)"
-  value       = replace(try(aws_apigatewayv2_stage.default[0].invoke_url, ""), "/^https?://([^/]*).*/", "$1")
-}
+#output "default_apigatewayv2_stage_domain_name" {
+#  description = "Domain name of the stage (useful for CloudFront distribution)"
+#  value       = replace(try(aws_apigatewayv2_stage.default[0].invoke_url, ""), "/^https?://([^/]*).*/", "$1")
+#}
 
 # domain name
-output "apigatewayv2_domain_name_id" {
-  description = "The domain name identifier"
-  value       = try(aws_apigatewayv2_domain_name.this[0].id, "")
-}
+#output "apigatewayv2_domain_name_id" {
+#  description = "The domain name identifier"
+#  value       = try(aws_apigatewayv2_domain_name.this[0].id, "")
+#}
 
-output "apigatewayv2_domain_name_arn" {
-  description = "The ARN of the domain name"
-  value       = try(aws_apigatewayv2_domain_name.this[0].arn, "")
-}
+#output "apigatewayv2_domain_name_arn" {
+#  description = "The ARN of the domain name"
+#  value       = try(aws_apigatewayv2_domain_name.this[0].arn, "")
+#}
 
 output "apigatewayv2_domain_name_api_mapping_selection_expression" {
   description = "The API mapping selection expression for the domain name"
