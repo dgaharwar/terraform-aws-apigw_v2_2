@@ -60,7 +60,7 @@ variable "description" {
 variable "default_route_settings" {
   description = "Settings for default route"
   type        = map(string)
-  default     = null
+  default     = {}
 }
 
 variable "disable_execute_api_endpoint" {
@@ -181,7 +181,7 @@ variable "domain_name_tags" {
 variable "mutual_tls_authentication" {
   description = "An Amazon S3 URL that specifies the truststore for mutual TLS authentication as well as version, keyed at uri and version"
   type        = map(string)
-  default     = null
+  default     = {}
 }
 
 ####
@@ -189,14 +189,14 @@ variable "mutual_tls_authentication" {
 variable "integrations" {
   description = "Map of API gateway routes with integrations"
   type        = map(any)
-  default     = null
+  default     = {}
 }
 
 # authorrizers
 variable "authorizers" {
   description = "Map of API gateway authorizers"
   type        = map(any)
-  default     = null
+  default     = {}
 }
 
 # vpc link
