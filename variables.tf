@@ -96,7 +96,7 @@ variable "route_selection_expression" {
 variable "cors_configuration" {
   description = "The cross-origin resource sharing (CORS) configuration. Applicable for HTTP APIs."
   type        = any
-  default     = 
+  default     = {}
 }
 
 variable "credentials_arn" {
@@ -203,7 +203,7 @@ variable "authorizers" {
 variable "vpc_links" {
   description = "Map of VPC Links details to create"
   type        = map(any)
-  default     = 
+  default     = {}
 }
 
 variable "vpc_link_tags" {
