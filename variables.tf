@@ -269,19 +269,19 @@ variable "IACRepo" {
 variable "ProductOwner" {
   description = "Email of the Product Owner"
   type        = string
-  default     = "user@petronas.com"
+  default     = "dgaharwar@morpheusdata.com"
 }
 
 variable "ProductSupport" {
   description = "Email of the Product Support"
   type        = string
-  default     = "user@petronas.com"
+  default     = "dgaharwar@morpheusdata.com"
 }
 
 variable "BusinessOwner" {
   description = "Email of the Business Owner"
   type        = string
-  default     = "user@petronas.com"
+  default     = "dgaharwar@morpheusdata.com"
 }
 
 variable "CSBIA_Availability" {
