@@ -29,7 +29,7 @@ variable "create_default_stage_api_mapping" {
 variable "create_api_domain_name" {
   description = "Whether to create API domain name resource"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_routes_and_integrations" {
@@ -48,7 +48,7 @@ variable "create_vpc_link" {
 variable "name" {
   description = "The name of the API"
   type        = string
-  default     = ""
+  default     = "MyApi"
 }
 
 variable "description" {
@@ -60,25 +60,25 @@ variable "description" {
 variable "default_route_settings" {
   description = "Settings for default route"
   type        = map(string)
-  default     = {}
+  default     = null
 }
 
 variable "disable_execute_api_endpoint" {
   description = "Whether clients can invoke the API by using the default execute-api endpoint. To require that clients use a custom domain name to invoke the API, disable the default endpoint"
   type        = string
-  default     = false
+  default     = null
 }
 
 variable "protocol_type" {
   description = "The API protocol. Valid values: HTTP, WEBSOCKET"
   type        = string
-  default     = "HTTP"
+  default     = null
 }
 
 variable "api_key_selection_expression" {
   description = "An API key selection expression. Valid values: $context.authorizer.usageIdentifierKey, $request.header.x-api-key."
   type        = string
-  default     = "$request.header.x-api-key"
+  default     = null
 }
 
 variable "route_key" {
@@ -90,13 +90,13 @@ variable "route_key" {
 variable "route_selection_expression" {
   description = "The route selection expression for the API."
   type        = string
-  default     = "$request.method $request.path"
+  default     = null
 }
 
 variable "cors_configuration" {
   description = "The cross-origin resource sharing (CORS) configuration. Applicable for HTTP APIs."
   type        = any
-  default     = {}
+  default     = null
 }
 
 variable "credentials_arn" {
@@ -181,7 +181,7 @@ variable "domain_name_tags" {
 variable "mutual_tls_authentication" {
   description = "An Amazon S3 URL that specifies the truststore for mutual TLS authentication as well as version, keyed at uri and version"
   type        = map(string)
-  default     = {}
+  default     = null
 }
 
 ####
@@ -189,21 +189,21 @@ variable "mutual_tls_authentication" {
 variable "integrations" {
   description = "Map of API gateway routes with integrations"
   type        = map(any)
-  default     = {}
+  default     = null
 }
 
 # authorrizers
 variable "authorizers" {
   description = "Map of API gateway authorizers"
   type        = map(any)
-  default     = {}
+  default     = null
 }
 
 # vpc link
 variable "vpc_links" {
   description = "Map of VPC Links details to create"
   type        = map(any)
-  default     = {}
+  default     = null
 }
 
 variable "vpc_link_tags" {
@@ -213,51 +213,48 @@ variable "vpc_link_tags" {
 }
 
 
-
-
-
 ## Tags
 
 variable "Project_Code" {
   description = "Project Code associated with the deployment"
   type        = string
-  default     = "03703"
+  default     = "testcode"
 }
 
 variable "ApplicationId" {
   description = "Application ID for the project"
   type        = string
-  default     = "ALPHA"
+  default     = "testid"
 }
 
 variable "ApplicationName" {
   description = "Name of the Application"
   type        = string
-  default     = "ALPHA"
+  default     = "TEST"
 }
 
 variable "environment" {
   description = "Deployment environment (e.g., Production, Staging)"
   type        = string
-  default     = "Production"
+  default     = "DEV"
 }
 
 variable "CostCenter" {
   description = "Cost Center for the project"
   type        = string
-  default     = "001PXXX12"
+  default     = "testcc"
 }
 
 variable "DataClassification" {
   description = "Data Classification level"
   type        = string
-  default     = "Confidential"
+  default     = "Internal"
 }
 
 variable "SCAClassification" {
   description = "SCA Classification level"
   type        = string
-  default     = "Standard"
+  default     = "Mission Critical"
 }
 
 variable "IACRepo" {
@@ -269,55 +266,55 @@ variable "IACRepo" {
 variable "ProductOwner" {
   description = "Email of the Product Owner"
   type        = string
-  default     = "dgaharwar@morpheusdata.com"
+  default     = "test@petronas.com"
 }
 
 variable "ProductSupport" {
   description = "Email of the Product Support"
   type        = string
-  default     = "dgaharwar@morpheusdata.com"
+  default     = "test@petronas.com"
 }
 
 variable "BusinessOwner" {
   description = "Email of the Business Owner"
   type        = string
-  default     = "dgaharwar@morpheusdata.com"
+  default     = "test@petronas.com"
 }
 
 variable "CSBIA_Availability" {
   description = "CSBIA Availability level"
   type        = string
-  default     = "Moderate"
+  default     = "Minor"
 }
 
 variable "CSBIA_Confidentiality" {
   description = "CSBIA Confidentiality level"
   type        = string
-  default     = "Major"
+  default     = "Missing"
 }
 
 variable "CSBIA_ImpactScore" {
   description = "CSBIA Impact Score"
   type        = string
-  default     = "Major"
+  default     = "Insignificant"
 }
 
 variable "CSBIA_Integrity" {
   description = "CSBIA Integrity level"
   type        = string
-  default     = "Moderate"
+  default     = "Insignificant"
 }
 
 variable "BusinessOPU_HCU" {
   description = "Business OPU/HCU associated with the project"
   type        = string
-  default     = "GTS"
+  default     = "PDSB"
 }
 
 variable "BusinessStream" {
   description = "Business Stream associated with the project"
   type        = string
-  default     = "PDnT"
+  default     = "Upstream"
 }
 
 variable "SRNumber" {
