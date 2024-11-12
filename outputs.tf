@@ -70,16 +70,16 @@ output "apigatewayv2_api_execution_arn" {
 #  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration[0].target_domain_name, "")
 #}
 
-output "apigatewayv2_domain_name_hosted_zone_id" {
-  description = "The Amazon Route 53 Hosted Zone ID of the endpoint"
-  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration[0].hosted_zone_id, "")
-}
+#output "apigatewayv2_domain_name_hosted_zone_id" {
+#  description = "The Amazon Route 53 Hosted Zone ID of the endpoint"
+#  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration[0].hosted_zone_id, "")
+#}
 
 # api mapping
-output "apigatewayv2_api_mapping_id" {
-  description = "The API mapping identifier."
-  value       = try(aws_apigatewayv2_api_mapping.this[0].id, "")
-}
+#output "apigatewayv2_api_mapping_id" {
+#  description = "The API mapping identifier."
+#  value       = try(aws_apigatewayv2_api_mapping.this[0].id, "")
+#}
 
 # VPC link
 output "apigatewayv2_vpc_link_id" {
