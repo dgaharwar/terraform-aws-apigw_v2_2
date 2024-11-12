@@ -1,3 +1,7 @@
+variable "region" {}
+variable "access_key" {}
+variable "secret_key {}
+
 variable "create" {
   description = "Controls if API Gateway resources should be created"
   type        = bool
