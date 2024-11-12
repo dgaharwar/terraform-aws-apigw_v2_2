@@ -72,7 +72,7 @@ variable "disable_execute_api_endpoint" {
 variable "protocol_type" {
   description = "The API protocol. Valid values: HTTP, WEBSOCKET"
   type        = string
-  default     = null
+  default     = "HTTP"
 }
 
 variable "api_key_selection_expression" {
