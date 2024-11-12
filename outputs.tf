@@ -55,20 +55,20 @@ output "apigatewayv2_api_execution_arn" {
 #  value       = try(aws_apigatewayv2_domain_name.this[0].arn, "")
 #}
 
-output "apigatewayv2_domain_name_api_mapping_selection_expression" {
-  description = "The API mapping selection expression for the domain name"
-  value       = try(aws_apigatewayv2_domain_name.this[0].api_mapping_selection_expression, "")
-}
+#output "apigatewayv2_domain_name_api_mapping_selection_expression" {
+#  description = "The API mapping selection expression for the domain name"
+#  value       = try(aws_apigatewayv2_domain_name.this[0].api_mapping_selection_expression, "")
+#}
 
-output "apigatewayv2_domain_name_configuration" {
-  description = "The domain name configuration"
-  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration, "")
-}
+#output "apigatewayv2_domain_name_configuration" {
+#  description = "The domain name configuration"
+#  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration, "")
+#}
 
-output "apigatewayv2_domain_name_target_domain_name" {
-  description = "The target domain name"
-  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration[0].target_domain_name, "")
-}
+#output "apigatewayv2_domain_name_target_domain_name" {
+#  description = "The target domain name"
+#  value       = try(aws_apigatewayv2_domain_name.this[0].domain_name_configuration[0].target_domain_name, "")
+#}
 
 output "apigatewayv2_domain_name_hosted_zone_id" {
   description = "The Amazon Route 53 Hosted Zone ID of the endpoint"
