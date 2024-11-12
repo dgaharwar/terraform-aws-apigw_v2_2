@@ -60,76 +60,76 @@ resource "aws_apigatewayv2_api" "this" {
 }
 
 # Domain name
-#resource "aws_apigatewayv2_domain_name" "this" {
-#  count = var.create && var.create_api_domain_name ? 1 : 0
+resource "aws_apigatewayv2_domain_name" "this" {
+  count = var.create && var.create_api_domain_name ? 1 : 0
 
-#  domain_name = var.domain_name
+  domain_name = var.domain_name
 
-#  domain_name_configuration {
-#    certificate_arn                        = var.domain_name_certificate_arn
-#    ownership_verification_certificate_arn = var.domain_name_ownership_verification_certificate_arn
-#    endpoint_type                          = "REGIONAL"
-#    security_policy                        = "TLS_1_2"
-#  }
+  domain_name_configuration {
+    certificate_arn                        = var.domain_name_certificate_arn
+    ownership_verification_certificate_arn = var.domain_name_ownership_verification_certificate_arn
+    endpoint_type                          = "REGIONAL"
+    security_policy                        = "TLS_1_2"
+  }
 
-#  dynamic "mutual_tls_authentication" {
-#    for_each = length(keys(var.mutual_tls_authentication)) == 0 ? [] : [var.mutual_tls_authentication]
+  dynamic "mutual_tls_authentication" {
+    for_each = length(keys(var.mutual_tls_authentication)) == 0 ? [] : [var.mutual_tls_authentication]
 
-#    content {
-#      truststore_uri     = mutual_tls_authentication.value.truststore_uri
-#      truststore_version = try(mutual_tls_authentication.value.truststore_version, null)
-#    }
-#  }
+    content {
+      truststore_uri     = mutual_tls_authentication.value.truststore_uri
+      truststore_version = try(mutual_tls_authentication.value.truststore_version, null)
+    }
+  }
 
   # tags = merge(var.domain_name_tags, var.tags)
-#  tags = local.common_tags
-#}
+  tags = local.common_tags
+}
 
 # Default stage
-#resource "aws_apigatewayv2_stage" "default" {
-#  count = var.create && var.create_default_stage ? 1 : 0
+resource "aws_apigatewayv2_stage" "default" {
+  count = var.create && var.create_default_stage ? 1 : 0
 
-#  api_id      = aws_apigatewayv2_api.this[0].id
-#  name        = "$default"
-#  auto_deploy = true
+  api_id      = aws_apigatewayv2_api.this[0].id
+  name        = "$default"
+  auto_deploy = true
 
-#  dynamic "access_log_settings" {
-#    for_each = var.default_stage_access_log_destination_arn != null && var.default_stage_access_log_format != null ? [true] : []
+  dynamic "access_log_settings" {
+    for_each = var.default_stage_access_log_destination_arn != null && var.default_stage_access_log_format != null ? [true] : []
 
-#    content {
-#      destination_arn = var.default_stage_access_log_destination_arn
-#      format          = var.default_stage_access_log_format
-#    }
-#  }
+    content {
+      destination_arn = var.default_stage_access_log_destination_arn
+      format          = var.default_stage_access_log_format
+    }
+  }
 
-#  dynamic "default_route_settings" {
-#    for_each = length(keys(var.default_route_settings)) == 0 ? [] : [var.default_route_settings]
+  dynamic "default_route_settings" {
+    for_each = length(keys(var.default_route_settings)) == 0 ? [] : [var.default_route_settings]
 
-#    content {
-#      data_trace_enabled       = try(default_route_settings.value.data_trace_enabled, false)
-#      detailed_metrics_enabled = try(default_route_settings.value.detailed_metrics_enabled, false)
-#      logging_level            = try(default_route_settings.value.logging_level, null)
-#      throttling_burst_limit   = try(default_route_settings.value.throttling_burst_limit, null)
-#      throttling_rate_limit    = try(default_route_settings.value.throttling_rate_limit, null)
-#    }
-#  }
+    content {
+      data_trace_enabled       = try(default_route_settings.value.data_trace_enabled, false)
+      detailed_metrics_enabled = try(default_route_settings.value.detailed_metrics_enabled, false)
+      logging_level            = try(default_route_settings.value.logging_level, null)
+      throttling_burst_limit   = try(default_route_settings.value.throttling_burst_limit, null)
+      throttling_rate_limit    = try(default_route_settings.value.throttling_rate_limit, null)
+    }
+  }
 
   # tags = merge(var.default_stage_tags, var.tags)
-#  tags = local.common_tags
+  tags = local.common_tags
 
-#  lifecycle {
-#    ignore_changes = [deployment_id]
-#  }
-#}
+  lifecycle {
+    ignore_changes = [deployment_id]
+  }
+}
 
 # Default API mapping
-#resource "aws_apigatewayv2_api_mapping" "this" {
-#  count = var.create && var.create_api_domain_name && var.create_default_stage && var.create_default_stage_api_mapping ? 1 : 0
+resource "aws_apigatewayv2_api_mapping" "this" {
+  count = var.create && var.create_api_domain_name && var.create_default_stage && var.create_default_stage_api_mapping ? 1 : 0
 
-#  api_id      = aws_apigatewayv2_api.this[0].id
-#  domain_name = aws_apigatewayv2_domain_name.this[0].id
-#  stage       = aws_apigatewayv2_stage.default[0].id
-#}
+  api_id      = aws_apigatewayv2_api.this[0].id
+  domain_name = aws_apigatewayv2_domain_name.this[0].id
+  stage       = aws_apigatewayv2_stage.default[0].id
+}
 
 # Routes and integrations
 resource "aws_apigatewayv2_route" "this" {
