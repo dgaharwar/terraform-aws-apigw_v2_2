@@ -29,7 +29,7 @@ variable "create_default_stage_api_mapping" {
 variable "create_api_domain_name" {
   description = "Whether to create API domain name resource"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "create_routes_and_integrations" {
@@ -48,7 +48,7 @@ variable "create_vpc_link" {
 variable "name" {
   description = "The name of the API"
   type        = string
-  default     = "MyApi"
+  default     = ""
 }
 
 variable "description" {
@@ -66,7 +66,7 @@ variable "default_route_settings" {
 variable "disable_execute_api_endpoint" {
   description = "Whether clients can invoke the API by using the default execute-api endpoint. To require that clients use a custom domain name to invoke the API, disable the default endpoint"
   type        = string
-  default     = null
+  default     = false
 }
 
 variable "protocol_type" {
@@ -78,7 +78,7 @@ variable "protocol_type" {
 variable "api_key_selection_expression" {
   description = "An API key selection expression. Valid values: $context.authorizer.usageIdentifierKey, $request.header.x-api-key."
   type        = string
-  default     = null
+  default     = "request.header.x-api-key"
 }
 
 variable "route_key" {
@@ -90,7 +90,7 @@ variable "route_key" {
 variable "route_selection_expression" {
   description = "The route selection expression for the API."
   type        = string
-  default     = null
+  default     = "$request.method $request.path"
 }
 
 variable "cors_configuration" {
@@ -213,112 +213,135 @@ variable "vpc_link_tags" {
 }
 
 
+## Provider Configurations
+
+# variable "region" {
+variable "aws_region" {
+  type      = string
+  sensitive = true
+}
+
+variable "aws_access_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "aws_secret_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "prefix" {
+  type      = string
+}
+
+
 ## Tags
 
 variable "Project_Code" {
   description = "Project Code associated with the deployment"
   type        = string
-  default     = "testcode"
+  default     = null
 }
 
 variable "ApplicationId" {
   description = "Application ID for the project"
   type        = string
-  default     = "testid"
+  default     = null
 }
 
 variable "ApplicationName" {
   description = "Name of the Application"
   type        = string
-  default     = "TEST"
+  default     = null
 }
 
 variable "environment" {
   description = "Deployment environment (e.g., Production, Staging)"
   type        = string
-  default     = "DEV"
+  default     = null
 }
 
 variable "CostCenter" {
   description = "Cost Center for the project"
   type        = string
-  default     = "testcc"
+  default     = null
 }
 
 variable "DataClassification" {
   description = "Data Classification level"
   type        = string
-  default     = "Internal"
+  default     = null
 }
 
 variable "SCAClassification" {
   description = "SCA Classification level"
   type        = string
-  default     = "Mission Critical"
+  default     = null
 }
 
 variable "IACRepo" {
   description = "Infrastructure as Code repository URL"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "ProductOwner" {
   description = "Email of the Product Owner"
   type        = string
-  default     = "test@petronas.com"
+  default     = null
 }
 
 variable "ProductSupport" {
   description = "Email of the Product Support"
   type        = string
-  default     = "test@petronas.com"
+  default     = null
 }
 
 variable "BusinessOwner" {
   description = "Email of the Business Owner"
   type        = string
-  default     = "test@petronas.com"
+  default     = null
 }
 
 variable "CSBIA_Availability" {
   description = "CSBIA Availability level"
   type        = string
-  default     = "Minor"
+  default     = null
 }
 
 variable "CSBIA_Confidentiality" {
   description = "CSBIA Confidentiality level"
   type        = string
-  default     = "Missing"
+  default     = null
 }
 
 variable "CSBIA_ImpactScore" {
   description = "CSBIA Impact Score"
   type        = string
-  default     = "Insignificant"
+  default     = null
 }
 
 variable "CSBIA_Integrity" {
   description = "CSBIA Integrity level"
   type        = string
-  default     = "Insignificant"
+  default     = null
 }
 
 variable "BusinessOPU_HCU" {
   description = "Business OPU/HCU associated with the project"
   type        = string
-  default     = "PDSB"
+  default     = null
 }
 
 variable "BusinessStream" {
   description = "Business Stream associated with the project"
   type        = string
-  default     = "Upstream"
+  default     = null
 }
 
 variable "SRNumber" {
   description = "Service Request Number"
   type        = string
-  default     = "REQ000006277983"
+  default     = null
 }
